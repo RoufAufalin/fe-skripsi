@@ -48,7 +48,7 @@ export default function InterestForm({ onNext, onBack }) {
                   />
                   <div className="w-14 h-14 rounded-full transition duration-300 cursor-pointer peer-checked:ring-4 peer-checked:ring-[#607DA8] flex items-center justify-center hover:scale-110">
                     <img
-                      src={`src/assets/emot/${value}.svg`}
+                      src={`public/assets/emot/${value}.svg`}
                       alt={`Emoticon ${value}`}
                       className="w-10 h-10"
                     />

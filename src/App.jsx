@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover"
-      style={{ backgroundImage: "url(/src/assets/bg.svg)" }}
+      style={{ backgroundImage: "url(/public/assets/bg.svg)" }}
     >
       {step === 1 && <LandingPage onStart={() => setStep(2)} />}
       {step === 2 && (

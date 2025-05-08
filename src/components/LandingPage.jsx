@@ -15,7 +15,7 @@ export default function LandingPage({onStart}) {
             </div>
         </div>
 
-        <img src="/src/assets/illustrasi.svg" alt="Logo" className="mx-auto" />
+        <img src="/public/assets/illustrasi.svg" alt="Logo" className="mx-auto" />
         </div>
     );
 }
