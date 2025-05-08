@@ -40,14 +40,46 @@ export default function App() {
       {step === 4 && (
         <RIASECForm
           onBack={() => setStep(3)}
-          onNext={(data) => {
+          onNext={async (data) => {
             setRiasecData(data);
-            setStep(5);
             console.log("RIASEC:", data);
+
+            // Gabungkan semua data jadi satu objek
+            const finalData = {
+              akademik: Object.values(academicData).map(Number),
+              keminatan: Object.values(interestData).map(Number),
+              riasec: Object.values(data).map(Number),
+            };
+
+            console.log("Data to send:", finalData);
+
+            try {
+              const response = await fetch(
+                "https://be-skripsi-production-fcd7.up.railway.app/recommend/",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(finalData),
+                }
+              );
+
+              const result = await response.json();
+              console.log("API response:", result);
+
+              setStudentData(result); // Jika ingin simpan hasil response
+              setStep(5); // Tampilkan result page
+            } catch (error) {
+              console.error("API error:", error);
+              alert("Terjadi kesalahan saat mengirim data.");
+            }
           }}
         />
       )}
-      {step === 5 && <ResultPage onBack={() => setStep(1)} />}
+      {step === 5 && (
+        <ResultPage onBack={() => setStep(1)} result={studentData} />
+      )}
     </div>
   );
 }
