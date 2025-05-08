@@ -22,7 +22,7 @@ export default function AcademicForm({ onNext }) {
       <h2 className="text-center text-3xl font-bold mb-4 text-[#607DA8]">
         Nilai Akademik
       </h2>
-      {["IPA", "IPS", "matematika", "bahasaIndonesia", "bahasaInggris"].map(
+      {["ipa", "ips", "matematika", "bahasaIndonesia", "bahasaInggris"].map(
         (field) => (
           <div key={field} className="mb-3">
             <label

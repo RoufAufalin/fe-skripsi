@@ -24,12 +24,12 @@ export default function RIASECForm({ onBack, onNext }) {
         Hasil Test RIASEC
       </h2>
       {[
-        "Realistic",
-        "Investigate",
-        "Artistic",
-        "Social",
-        "Enterprising",
-        "Conventional",
+        "realistic",
+        "investigate",
+        "artistic",
+        "social",
+        "enterprising",
+        "conventional",
       ].map((field) => (
         <div key={field} className="mb-4">
           <label

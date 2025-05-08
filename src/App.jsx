@@ -34,6 +34,7 @@ export default function App() {
             setInterestData(data);
             setStep(4);
             console.log("Interest Data:", data);
+            console.log("Academic Data:", academicData);
           }}
         />
       )}
