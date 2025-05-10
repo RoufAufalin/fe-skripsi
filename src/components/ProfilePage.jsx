@@ -6,11 +6,32 @@ export default function ProfileForm({ onNext }) {
     kelas: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setProfileData({ ...profileData, [e.target.name]: e.target.value });
+
+    // Reset error ketika pengguna mulai mengetik ulang
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    if (!profileData.nama.trim()) {
+      newErrors.nama = "Nama tidak boleh kosong.";
+    }
+    if (!profileData.kelas.trim()) {
+      newErrors.kelas = "Kelas tidak boleh kosong.";
+    }
+    return newErrors;
   };
 
   const handleSubmit = () => {
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
     onNext(profileData);
   };
 
@@ -20,7 +41,7 @@ export default function ProfileForm({ onNext }) {
         Masukkan Data Diri
       </h2>
       {["nama", "kelas"].map((field) => (
-        <div key={field} className="mb-3">
+        <div key={field} className="mb-4">
           <label
             htmlFor={field}
             className="block text-lg font-bold text-gray-700 mb-1"
@@ -33,11 +54,16 @@ export default function ProfileForm({ onNext }) {
             name={field}
             value={profileData[field]}
             onChange={handleChange}
-            placeholder={`Masukkan Nilai ${
+            placeholder={`Masukkan ${
               field.charAt(0).toUpperCase() + field.slice(1)
             }`}
-            className="w-full border border-gray-300 p-2 h-[60px] rounded-md"
+            className={`w-full border ${
+              errors[field] ? "border-red-500" : "border-gray-300"
+            } p-2 h-[60px] rounded-md`}
           />
+          {errors[field] && (
+            <p className="text-red-500 text-sm mt-1">{errors[field]}</p>
+          )}
         </div>
       ))}
       <button

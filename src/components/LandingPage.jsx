@@ -1,7 +1,9 @@
 export default function LandingPage({ onStart }) {
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center px-4 py-8 gap-6">
-      <div className="w-full max-w-xl">
+    <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center px-4 py-8 gap-6 lg:gap-40">
+      {" "}
+      {/* Menambahkan gap lebih besar pada tampilan desktop */}
+      <div className="w-full max-w-xl lg:w-2/3">
         <h1 className="text-3xl lg:text-4xl font-bold mb-4 font-body text-white text-center lg:text-left">
           Selamat Datang di Aplikasi Rekomendasi Mata Pelajaran
         </h1>
@@ -18,7 +20,6 @@ export default function LandingPage({ onStart }) {
           </button>
         </div>
       </div>
-
       <img
         src="/assets/illustrasi.svg"
         alt="Ilustrasi"
