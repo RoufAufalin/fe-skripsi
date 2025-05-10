@@ -23,17 +23,18 @@ export default function InterestForm({ onNext, onBack }) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-xl w-110 ">
-      <h2 className="text-center text-3xl font-bold mb-4 text-[#607DA8]">
+    <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-3xl mx-auto">
+      <h2 className="text-center text-2xl lg:text-3xl font-bold mb-6 text-[#607DA8]">
         Masukkan Minat Anda
       </h2>
-      <div className="space-y-6">
+
+      <div className="space-y-8">
         {interests.map((interest) => (
           <div key={interest}>
-            <label className="block font-bold mb-4 text-center text-lg">
+            <label className="block font-bold mb-4 text-center text-base lg:text-lg">
               {interest}
             </label>
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex justify-center items-center flex-wrap gap-4">
               {[1, 2, 3, 4, 5].map((value) => (
                 <label key={value} className="relative">
                   <input
@@ -60,17 +61,17 @@ export default function InterestForm({ onNext, onBack }) {
         ))}
       </div>
 
-      <div className="mt-6 flex justify-between gap-x-4">
+      <div className="mt-8 flex flex-col sm:flex-row justify-between gap-4">
         <button
           onClick={onBack}
-          className="flex-1 bg-gray-300 text-white py-3 hover:bg-[#4f6c96] text-xl font-jersey font-bold rounded"
+          className="flex-1 bg-gray-300 text-white py-3 hover:bg-[#4f6c96] text-lg font-jersey font-bold rounded"
         >
           Kembali
         </button>
 
         <button
           onClick={handleSubmit}
-          className="flex-1 bg-[#607DA8] text-white py-3 hover:bg-[#4f6c96] text-xl font-jersey font-bold rounded"
+          className="flex-1 bg-[#607DA8] text-white py-3 hover:bg-[#4f6c96] text-lg font-jersey font-bold rounded"
         >
           Lanjut
         </button>

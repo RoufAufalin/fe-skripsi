@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function RIASECForm({ onBack, onNext }) {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     realistic: "",
     investigate: "",
@@ -14,12 +15,23 @@ export default function RIASECForm({ onBack, onNext }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    onNext(formData);
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      await onNext(formData);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-xl w-110">
+    <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md mx-auto">
+      {loading && (
+        <div className="absolute inset-0 bg-white/30 z-10 flex items-center justify-center rounded-xl">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-[#607DA8] border-t-transparent"></div>
+        </div>
+      )}
+
       <h2 className="text-center text-3xl font-bold mb-4 text-[#607DA8]">
         Hasil Test RIASEC
       </h2>
@@ -48,6 +60,7 @@ export default function RIASECForm({ onBack, onNext }) {
               field.charAt(0).toUpperCase() + field.slice(1)
             }`}
             className="w-full border border-gray-300 p-2 h-[60px]"
+            disabled={loading}
           />
         </div>
       ))}
@@ -55,13 +68,19 @@ export default function RIASECForm({ onBack, onNext }) {
         <button
           onClick={onBack}
           className="flex-1 bg-gray-300 text-white py-3 hover:bg-[#4f6c96] text-xl font-jersey font-bold rounded"
+          disabled={loading}
         >
           Kembali
         </button>
 
         <button
           onClick={handleSubmit}
-          className="flex-1 bg-[#607DA8] text-white py-3 hover:bg-[#4f6c96] text-xl font-jersey font-bold rounded"
+          className={`flex-1 py-3 text-xl font-jersey font-bold rounded ${
+            loading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-[#607DA8] hover:bg-[#4f6c96]"
+          } text-white`}
+          disabled={loading}
         >
           Lanjut
         </button>

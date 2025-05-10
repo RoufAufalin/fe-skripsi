@@ -18,16 +18,17 @@ export default function AcademicForm({ onNext }) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-xl w-110">
-      <h2 className="text-center text-3xl font-bold mb-4 text-[#607DA8]">
+    <div className="bg-white p-6 pt-10 rounded-xl shadow-xl w-full max-w-md mx-auto">
+      <h2 className="text-center text-2xl lg:text-3xl font-bold mb-6 text-[#607DA8]">
         Nilai Akademik
       </h2>
+
       {["ipa", "ips", "matematika", "bahasaIndonesia", "bahasaInggris"].map(
         (field) => (
-          <div key={field} className="mb-3">
+          <div key={field} className="mb-4">
             <label
               htmlFor={field}
-              className="block text-lg font-bold text-gray-700 mb-1"
+              className="block text-base font-bold text-gray-700 mb-1"
             >
               {field.charAt(0).toUpperCase() +
                 field.slice(1).replace(/([A-Z])/g, " $1")}
@@ -40,14 +41,19 @@ export default function AcademicForm({ onNext }) {
               placeholder={`Masukkan Nilai ${
                 field.charAt(0).toUpperCase() + field.slice(1)
               }`}
-              className="w-full border border-gray-300 p-2 h-[60px]"
+              className="w-full border border-gray-300 p-3 h-14 rounded"
+              type="number"
+              min="10"
+              max="100"
+              step="10"
             />
           </div>
         )
       )}
+
       <button
         onClick={handleSubmit}
-        className="bg-[#607DA8] text-white w-full py-2 hover:bg-[#4f6c96] w-[350px] h-[60px] text-xl font-jersey font-bold rounded"
+        className="bg-[#607DA8] text-white w-full py-3 mt-4 hover:bg-[#4f6c96] text-xl font-jersey font-bold rounded"
       >
         Lanjut
       </button>
