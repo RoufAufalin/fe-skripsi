@@ -7,6 +7,7 @@ const interests = [
   "Minat Matematika",
   "Minat Teknologi",
   "Minat Kesehatan",
+  "Minat Ekonomi/Bisnis",
 ];
 
 export default function InterestForm({ onNext, onBack }) {
@@ -86,13 +87,6 @@ export default function InterestForm({ onNext, onBack }) {
                     }
                     className="sr-only peer"
                   />
-                  {/* <div className="w-14 h-14 rounded-full transition duration-300 cursor-pointer peer-checked:ring-4 peer-checked:ring-[#607DA8] flex items-center justify-center hover:scale-110">
-                    <img
-                      src={`/assets/emot/${value}.svg`}
-                      alt={`Emoticon ${value}`}
-                      className="w-10 h-10"
-                    />
-                  </div> */}
 
                   <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full transition duration-300 cursor-pointer peer-checked:ring-4 peer-checked:ring-[#607DA8] flex items-center justify-center hover:scale-110">
                     <img
